@@ -1,3 +1,4 @@
+// src/components/Splash.js
 import React from 'react';
 import './Splash.css';
 

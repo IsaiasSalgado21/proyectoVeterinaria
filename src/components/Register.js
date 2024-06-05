@@ -1,4 +1,6 @@
+// src/components/Register.js
 import React, { useState } from 'react';
+import './Auth.css';
 
 const Register = ({ onRegister }) => {
   const [email, setEmail] = useState('');

@@ -1,51 +1,42 @@
-import React, { useState } from 'react';
-import Splash from './components/Splash';
-import Login from './components/Login';
-import Register from './components/Register';
+// src/App.js
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import Report from './components/Report';
+import EmergencyCall from './components/EmergencyCall';
+import Settings from './components/Settings';
+import UserProfile from './components/UserProfile';
+import Home from './components/Home';
+import AdoptPet from './components/AdoptPet';
+import Splash from './components/Splash';
+import Register from './components/Register';
+import Login from './components/Login';
 import Dashboard from './components/Dashboard';
-import Adoption from './components/Adoption';
-import './App.css';
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [view, setView] = useState('splash');
+  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
 
-  const handleLogin = () => {
-    setIsAuthenticated(true);
-    setView('dashboard');
-  };
-
-  const handleRegister = () => {
-    setIsAuthenticated(true);
-    setView('dashboard');
-  };
-
-  const handleLogout = () => {
-    setIsAuthenticated(false);
-    setView('login');
-  };
-
-  if (!isAuthenticated) {
-    return (
-      <div className="App">
-        {view === 'splash' && <Splash />}
-        {view === 'login' && <Login onLogin={handleLogin} />}
-        {view === 'register' && <Register onRegister={handleRegister} />}
-        <div className="auth-buttons">
-          <button onClick={() => setView('login')}>Login</button>
-          <button onClick={() => setView('register')}>Register</button>
-        </div>
-      </div>
-    );
-  }
+  const handleLogin = () => setIsLoggedIn(true);
+  const handleRegister = () => setIsLoggedIn(true);
 
   return (
-    <div className="App">
-      <Navbar onLogout={handleLogout} />
-      {view === 'dashboard' && <Dashboard />}
-      {view === 'adoption' && <Adoption />}
-    </div>
+    <Router>
+      <div className="App">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Splash />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/report" element={<Report />} />
+          <Route path="/emergency" element={<EmergencyCall />} />
+          <Route path="/settings" element={<Settings />} />
+          <Route path="/profile" element={<UserProfile />} />
+          <Route path="/adopt" element={<AdoptPet />} />
+          <Route path="/login" element={<Login onLogin={handleLogin} />} />
+          <Route path="/register" element={<Register onRegister={handleRegister} />} />
+          {isLoggedIn && <Route path="/dashboard" element={<Dashboard />} />}
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
