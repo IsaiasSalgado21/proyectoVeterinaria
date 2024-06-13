@@ -14,6 +14,7 @@ import Login from './components/Login';
 import Dashboard from './components/Dashboard';
 import Store from './components/Store';
 import PasswordRecovery from './components/PasswordRecovery';
+import Footer from './components/Footer';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
@@ -24,7 +25,6 @@ function App() {
     // Lógica después de la recuperación de contraseña
     console.log('Correo de recuperación de contraseña enviado');
   };
-
   return (
     <Router>
       <div className="App">
@@ -47,6 +47,7 @@ function App() {
           )}
           <Route path="/passrec" element={<PasswordRecovery />} />
         </Routes>
+        <Footer />
       </div>
     </Router>
   );
