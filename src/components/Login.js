@@ -45,7 +45,10 @@ const Login = ({ onLogin }) => {
         <button type="submit">Iniciar Sesión</button>
       </form>
       <p className="redirect-text">
-        Don't have an account? <Link to="/register" className="redirect-link">Register</Link>
+        <Link to="/register" className="redirect-link">Registrarse</Link>
+      </p>
+      <p className="redirect-text">
+        <Link to="/passrec" className="redirect-link">Recuperar Contraseña</Link>
       </p>
     </div>
   );

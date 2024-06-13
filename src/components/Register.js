@@ -52,7 +52,7 @@ const Register = ({ onRegister }) => {
             <Link to="/login" className="redirect-link">Iniciar Sesion</Link>
         </p>
         <p className="redirect-text">
-            <Link to="/login" className="redirect-link">Recuperar contraseña</Link>
+            <Link to="/passrec" className="redirect-link">Recuperar contraseña</Link>
         </p>
       </form>
     </div>
