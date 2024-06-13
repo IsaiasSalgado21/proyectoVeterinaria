@@ -1,6 +1,6 @@
 // src/App.js
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Report from './components/Report';
 import EmergencyCall from './components/EmergencyCall';
@@ -12,6 +12,7 @@ import Splash from './components/Splash';
 import Register from './components/Register';
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
+import Store from './components/Store';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
@@ -33,7 +34,12 @@ function App() {
           <Route path="/adopt" element={<AdoptPet />} />
           <Route path="/login" element={<Login onLogin={handleLogin} />} />
           <Route path="/register" element={<Register onRegister={handleRegister} />} />
-          {isLoggedIn && <Route path="/dashboard" element={<Dashboard />} />}
+          <Route path="/store" element={<Store />} />
+          {isLoggedIn ? (
+            <Route path="/dashboard" element={<Dashboard />} />
+          ) : (
+            <Route path="*" element={<Navigate to="/login" />} />
+          )}
         </Routes>
       </div>
     </Router>

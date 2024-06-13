@@ -8,7 +8,7 @@ const Login = ({ onLogin }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const navigate = useNavigate(); // Hook para redireccionar
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -18,7 +18,7 @@ const Login = ({ onLogin }) => {
     setTimeout(() => {
       onLogin();
       setIsLoading(false);
-      navigate('/'); // Redirecciona a la pantalla de splash
+      navigate('/dashboard'); // Redirecciona al Dashboard
     }, 2000); // Simula un retraso de 2 segundos para la autenticación
   };
 
@@ -28,7 +28,7 @@ const Login = ({ onLogin }) => {
 
   return (
     <div className="auth-container">
-      <h2>Inicio de Sesion</h2>
+      <h2>Inicio de Sesión</h2>
       <form onSubmit={handleSubmit}>
         <input
           type="email"
@@ -42,7 +42,7 @@ const Login = ({ onLogin }) => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit">Iniciar Sesion</button>
+        <button type="submit">Iniciar Sesión</button>
       </form>
       <p className="redirect-text">
         Don't have an account? <Link to="/register" className="redirect-link">Register</Link>
@@ -52,4 +52,3 @@ const Login = ({ onLogin }) => {
 };
 
 export default Login;
-
