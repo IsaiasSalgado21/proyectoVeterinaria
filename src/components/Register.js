@@ -1,9 +1,11 @@
 // src/components/Register.js
+import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
 import './Auth.css';
 
 const Register = ({ onRegister }) => {
   const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
@@ -22,6 +24,12 @@ const Register = ({ onRegister }) => {
       <h2>Register</h2>
       <form onSubmit={handleSubmit}>
         <input
+          type="name"
+          placeholder="Nombre de Usuario"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+        <input
           type="email"
           placeholder="Email"
           value={email}
@@ -29,17 +37,23 @@ const Register = ({ onRegister }) => {
         />
         <input
           type="password"
-          placeholder="Password"
+          placeholder="Contraseña"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
         <input
           type="password"
-          placeholder="Confirm Password"
+          placeholder="Confirmar Contraseña"
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
         />
-        <button type="submit">Register</button>
+        <button type="submit">Registrarse</button>
+        <p className="redirect-text">
+            <Link to="/login" className="redirect-link">Iniciar Sesion</Link>
+        </p>
+        <p className="redirect-text">
+            <Link to="/login" className="redirect-link">Recuperar contraseña</Link>
+        </p>
       </form>
     </div>
   );

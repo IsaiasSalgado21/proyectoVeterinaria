@@ -1,5 +1,6 @@
 // src/components/Login.js
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './Auth.css';
 
 const Login = ({ onLogin }) => {
@@ -14,7 +15,7 @@ const Login = ({ onLogin }) => {
 
   return (
     <div className="auth-container">
-      <h2>Login</h2>
+      <h2>Inicio de Sesion</h2>
       <form onSubmit={handleSubmit}>
         <input
           type="email"
@@ -24,11 +25,17 @@ const Login = ({ onLogin }) => {
         />
         <input
           type="password"
-          placeholder="Password"
+          placeholder="Contraseña"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit">Login</button>
+        <button type="submit">Iniciar Sesion</button>
+        <p className="redirect-text">
+            <Link to="/register" className="redirect-link">Registrarse</Link>
+        </p>
+        <p className="redirect-text">
+            <Link to="/register" className="redirect-link">Recuperar contraseña</Link>
+        </p>
       </form>
     </div>
   );
