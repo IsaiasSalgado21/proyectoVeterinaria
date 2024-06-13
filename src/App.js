@@ -30,7 +30,7 @@ function App() {
       <div className="App">
         <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
         <Routes>
-          <Route path="/" element={<Splash />} />
+          <Route path="/" element={isLoggedIn ? <Navigate to="/dashboard" /> : <Splash />} />
           <Route path="/home" element={<Home />} />
           <Route path="/report" element={<Report />} />
           <Route path="/emergency" element={<EmergencyCall />} />
