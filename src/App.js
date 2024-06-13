@@ -12,13 +12,16 @@ import Splash from './components/Splash';
 import Register from './components/Register';
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
-import Store from './components/Store';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
 
   const handleLogin = () => setIsLoggedIn(true);
   const handleRegister = () => setIsLoggedIn(true);
+  const handlePasswordRecovery = () => {
+    // Lógica después de la recuperación de contraseña
+    console.log('Correo de recuperación de contraseña enviado');
+  };
 
   return (
     <Router>
@@ -34,12 +37,7 @@ function App() {
           <Route path="/adopt" element={<AdoptPet />} />
           <Route path="/login" element={<Login onLogin={handleLogin} />} />
           <Route path="/register" element={<Register onRegister={handleRegister} />} />
-          <Route path="/store" element={<Store />} />
-          {isLoggedIn ? (
-            <Route path="/dashboard" element={<Dashboard />} />
-          ) : (
-            <Route path="*" element={<Navigate to="/login" />} />
-          )}
+          {isLoggedIn && <Route path="/dashboard" element={<Dashboard />} />}
         </Routes>
       </div>
     </Router>
