@@ -1,22 +1,45 @@
 // src/components/AdoptPet.js
 import React from 'react';
+import PetCard from './PetCard';
+import './AdoptPet.css';
+
+const pets = [
+  {
+    name: 'Fido',
+    age: '2 años',
+    species: 'Perro',
+    breed: 'Labrador',
+    size: 'Mediano',
+    image: 'https://via.placeholder.com/150'
+  },
+  {
+    name: 'Whiskers',
+    age: '3 años',
+    species: 'Gato',
+    breed: 'Siamés',
+    size: 'Pequeño',
+    image: 'https://via.placeholder.com/150'
+  },
+  // Añade más mascotas aquí
+];
 
 const AdoptPet = () => {
   return (
     <div className="page-container">
       <h2>Adoptar una Mascota</h2>
       <p>Encuentra a tu nuevo amigo peludo en nuestra lista de mascotas disponibles para adopción.</p>
-      {/* Aquí iría el listado de mascotas disponibles para adopción */}
       <div className="pet-list">
-        <div className="pet-item">
-          <img src="https://via.placeholder.com/150" alt="Mascota" />
-          <h3>Nombre: Fido</h3>
-          <p>Edad: 2 años</p>
-          <p>Especie y raza: Perro, Labrador</p>
-          <p>Tamaño: Mediano</p>
-          <button>Ver detalles</button>
-        </div>
-        {/* Añade más elementos de mascotas según sea necesario */}
+        {pets.map((pet, index) => (
+          <PetCard
+            key={index}
+            name={pet.name}
+            age={pet.age}
+            species={pet.species}
+            breed={pet.breed}
+            size={pet.size}
+            image={pet.image}
+          />
+        ))}
       </div>
     </div>
   );

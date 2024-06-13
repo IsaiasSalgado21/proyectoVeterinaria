@@ -1,0 +1,11 @@
+/* src/components/AdoptPet.css */
+.page-container {
+    padding: 20px;
+  }
+  
+  .pet-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
