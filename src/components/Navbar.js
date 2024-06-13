@@ -3,7 +3,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 
-const Navbar = () => {
+const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    // Puedes agregar más lógica de limpieza si es necesario
+  };
+
   return (
     <nav className="navbar">
       <div className="navbar-left">
@@ -47,12 +52,20 @@ const Navbar = () => {
         <Link to="/profile" className="nav-link">
           <i className="nav-icon user-icon"></i>Perfil
         </Link>
-        <Link to="/login" className="nav-link">
-          Iniciar Sesión
-        </Link>
-        <Link to="/register" className="nav-link">
-          Registrarse
-        </Link>
+        {isLoggedIn ? (
+          <Link to="/" className="nav-link" onClick={handleLogout}>
+            Salir
+          </Link>
+        ) : (
+          <>
+            <Link to="/login" className="nav-link">
+              Iniciar Sesión
+            </Link>
+            <Link to="/register" className="nav-link">
+              Registrarse
+            </Link>
+          </>
+        )}
       </div>
     </nav>
   );
