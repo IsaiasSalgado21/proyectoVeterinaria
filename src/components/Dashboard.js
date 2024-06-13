@@ -4,16 +4,23 @@ import { Link } from 'react-router-dom';
 import PetCard from './PetCard';
 import './Dashboard.css';
 
+import MaxLabrador from './img/MaxLabrador.jpg';
+import LunaBeagle from './img/LunaBeagle.jpg';
+
+import JuguetesGatos from './img/JuguetesGatos.jpg';
+import AlimentoPerros from './img/AlimentoPerros.jpg';
+
 // Datos de ejemplo para mascotas y productos
 const pets = [
-  { name: 'Max', age: '2 años', breed: 'Labrador', image: 'https://via.placeholder.com/150' },
-  { name: 'Luna', age: '1 año', breed: 'Beagle', image: 'https://via.placeholder.com/150' }
-];
+  { name: 'Max', age: '2 años', breed: 'Labrador', image: MaxLabrador },
+  { name: 'Luna', age: '1 año', breed: 'Beagle', image: LunaBeagle }
+  ];
 
 const products = [
-  { name: 'Comida para perros', price: '$20', image: 'https://via.placeholder.com/150' },
-  { name: 'Juguetes para gatos', price: '$15', image: 'https://via.placeholder.com/150' }
+  { name: 'Comida para perros', price: '$20', image: AlimentoPerros },
+  { name: 'Juguetes para gatos', price: '$15', image: JuguetesGatos }
 ];
+
 
 const Dashboard = () => {
   return (
