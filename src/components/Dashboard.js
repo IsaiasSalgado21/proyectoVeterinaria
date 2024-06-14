@@ -1,28 +1,20 @@
 // src/components/Dashboard.js
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
 import PetCard from './PetCard';
 import './Dashboard.css';
-
-import MaxLabrador from './img/MaxLabrador.jpg';
-import LunaBeagle from './img/LunaBeagle.jpg';
+import { PetContext } from '../contexts/PetProvider';
 
 import JuguetesGatos from './img/JuguetesGatos.jpg';
 import AlimentoPerros from './img/AlimentoPerros.jpg';
-
-// Datos de ejemplo para mascotas y productos
-const pets = [
-  { name: 'Max', age: '2 años', breed: 'Labrador', image: MaxLabrador },
-  { name: 'Luna', age: '1 año', breed: 'Beagle', image: LunaBeagle }
-  ];
 
 const products = [
   { name: 'Comida para perros', price: '$20', image: AlimentoPerros },
   { name: 'Juguetes para gatos', price: '$15', image: JuguetesGatos }
 ];
 
-
 const Dashboard = () => {
+  const { pets } = useContext(PetContext);
+
   return (
     <div className="dashboard-container">
       <h2>Dashboard</h2>
@@ -36,9 +28,9 @@ const Dashboard = () => {
               key={index}
               name={pet.name}
               age={pet.age}
-              species="Perro"
+              species={pet.species}
               breed={pet.breed}
-              size="Mediano"
+              size={pet.size}
               image={pet.image}
             />
           ))}

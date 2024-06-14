@@ -15,7 +15,7 @@ import Dashboard from './components/Dashboard';
 import Store from './components/Store';
 import PasswordRecovery from './components/PasswordRecovery';
 import Footer from './components/Footer';
-import { ThemeProvider } from './context/ThemeContext';
+import { ThemeProvider } from './contexts/ThemeContext';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
