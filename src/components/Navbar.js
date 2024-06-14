@@ -58,6 +58,9 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
           </Link>
         ) : (
           <>
+            <Link to="/settings" className="nav-link">
+              Opciones
+            </Link>
             <Link to="/login" className="nav-link">
               Iniciar Sesión
             </Link>

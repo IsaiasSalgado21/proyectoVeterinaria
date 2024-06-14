@@ -4,3 +4,17 @@ body {
   margin: 0;
   padding: 0;
 }
+@import url('./themes/light.css');
+@import url('./themes/dark.css');
+
+body.light {
+  background-color: white;
+  color: black;
+}
+
+body.dark {
+  background-color: black;
+  color: white;
+}
+
+/* Otros estilos globales */

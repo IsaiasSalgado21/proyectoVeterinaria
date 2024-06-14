@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import Navbar from './components/Navbar';
 import Report from './components/Report';
 import EmergencyCall from './components/EmergencyCall';
-import Settings from './components/Settings';
+import PageSettings from './components/PageSettings';
 import UserProfile from './components/UserProfile';
 import Home from './components/Home';
 import AdoptPet from './components/AdoptPet';
@@ -15,6 +15,7 @@ import Dashboard from './components/Dashboard';
 import Store from './components/Store';
 import PasswordRecovery from './components/PasswordRecovery';
 import Footer from './components/Footer';
+import { ThemeProvider } from './context/ThemeContext';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
@@ -26,6 +27,7 @@ function App() {
     console.log('Correo de recuperación de contraseña enviado');
   };
   return (
+    <ThemeProvider>
     <Router>
       <div className="App">
         <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
@@ -34,7 +36,7 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/report" element={<Report />} />
           <Route path="/emergency" element={<EmergencyCall />} />
-          <Route path="/settings" element={<Settings />} />
+          <Route path="/settings" element={<PageSettings />} />
           <Route path="/profile" element={<UserProfile />} />
           <Route path="/adopt" element={<AdoptPet />} />
           <Route path="/login" element={<Login onLogin={handleLogin} />} />
@@ -50,6 +52,7 @@ function App() {
         <Footer />
       </div>
     </Router>
+    </ThemeProvider>
   );
 }
 
