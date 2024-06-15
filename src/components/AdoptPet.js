@@ -1,29 +1,13 @@
 // src/components/AdoptPet.js
-import React from 'react';
+import React, { useContext }  from 'react';
+import { PetContext } from '../context/PetProvider';
+
 import PetCard from './PetCard';
 import './AdoptPet.css';
 
-const pets = [
-  {
-    name: 'Fido',
-    age: '2 años',
-    species: 'Perro',
-    breed: 'Labrador',
-    size: 'Mediano',
-    image: 'https://via.placeholder.com/150'
-  },
-  {
-    name: 'Whiskers',
-    age: '3 años',
-    species: 'Gato',
-    breed: 'Siamés',
-    size: 'Pequeño',
-    image: 'https://via.placeholder.com/150'
-  },
-  // Añade más mascotas aquí
-];
-
 const AdoptPet = () => {
+  const { pets } = useContext(PetContext);
+
   return (
     <div className="page-container">
       <h2>Adoptar una Mascota</h2>

@@ -1,6 +1,9 @@
 // src/context/PetProvider.js
 import React, { createContext, useState } from 'react';
-
+import MaxLabrador from '../components/img/MaxLabrador.jpg';
+import LunaBeagle from '../components/img/LunaBeagle.jpg';
+import GatoFido from '../components/img/GatoFido.jpg';
+import GatoWhiskers from '../components/img/GatoWhiskers.jpg';
 export const PetContext = createContext();
 
 export const PetProvider = ({ children }) => {
@@ -11,7 +14,7 @@ export const PetProvider = ({ children }) => {
       species: 'Perro',
       breed: 'Labrador',
       size: 'Mediano',
-      image: require('../components/img/MaxLabrador.jpg').default
+      image: MaxLabrador,
     },
     {
       name: 'Luna',
@@ -19,15 +22,15 @@ export const PetProvider = ({ children }) => {
       species: 'Perro',
       breed: 'Beagle',
       size: 'Mediano',
-      image: require('../components/img/LunaBeagle.jpg').default
+      image: LunaBeagle,
     },
     {
       name: 'Fido',
       age: '2 años',
-      species: 'Perro',
-      breed: 'Labrador',
+      species: 'Gato',
+      breed: 'Siamés',
       size: 'Mediano',
-      image: 'https://via.placeholder.com/150'
+      image: GatoFido,
     },
     {
       name: 'Whiskers',
@@ -35,7 +38,7 @@ export const PetProvider = ({ children }) => {
       species: 'Gato',
       breed: 'Siamés',
       size: 'Pequeño',
-      image: 'https://via.placeholder.com/150'
+      image: GatoWhiskers,
     },
   ]);
 
