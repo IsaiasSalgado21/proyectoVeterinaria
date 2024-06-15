@@ -5,7 +5,7 @@ import { AuthContext } from '../context/AuthContext';
 import './Navbar.css';
 
 const Navbar = () => {
-  const { isLoggedIn, logout } = useContext(AuthContext);
+  const { user, logout } = useContext(AuthContext);
 
   return (
     <nav className="navbar">
@@ -47,7 +47,7 @@ const Navbar = () => {
         </div>
       </div>
       <div className="navbar-right">
-        {isLoggedIn ? (
+        {user ? (
           <>
             <Link to="/profile" className="nav-link">
               <i className="nav-icon user-icon"></i>Perfil

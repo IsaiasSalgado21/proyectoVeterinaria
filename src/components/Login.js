@@ -18,10 +18,9 @@ const Login = () => {
 
     // Simular lógica de autenticación
     setTimeout(() => {
-      const user = { email, name: 'Usuario' }; // Aquí debes agregar lógica real de autenticación
-      login(user);
+      login({ email });
       setIsLoading(false);
-      navigate('/dashboard');
+      navigate('/dashboard'); // Redirecciona al Dashboard
     }, 2000); // Simula un retraso de 2 segundos para la autenticación
   };
 

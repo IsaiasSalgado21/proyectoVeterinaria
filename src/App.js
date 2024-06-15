@@ -17,7 +17,7 @@ import PasswordRecovery from './components/PasswordRecovery';
 import Footer from './components/Footer';
 import { ThemeProvider } from './context/ThemeContext';
 import { PetProvider } from './context/PetProvider';
-import AuthProvider, { AuthContext } from './context/AuthContext';
+import { AuthProvider } from './context/AuthContext'; // Asegúrate de importar AuthProvider
 
 function App() {
   return (
