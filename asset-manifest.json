@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/proyectoVeterinaria/static/css/main.26d5c675.css",
+    "main.js": "/proyectoVeterinaria/static/js/main.8e74cfcc.js",
+    "static/media/GatoWhiskers.jpg": "/proyectoVeterinaria/static/media/GatoWhiskers.2f02f267d7636618656b.jpg",
+    "static/media/LunaBeagle.jpg": "/proyectoVeterinaria/static/media/LunaBeagle.c10269b1a588098c5da4.jpg",
+    "static/media/MaxLabrador.jpg": "/proyectoVeterinaria/static/media/MaxLabrador.b16be4ecde60be285a4f.jpg",
+    "static/media/GatoFido.jpg": "/proyectoVeterinaria/static/media/GatoFido.0434e6332c2f5c7e345e.jpg",
+    "static/media/JuguetesGatos.jpg": "/proyectoVeterinaria/static/media/JuguetesGatos.30fc239af8f75fdae1a3.jpg",
+    "static/media/AlimentoPerros.jpg": "/proyectoVeterinaria/static/media/AlimentoPerros.47f3fbafa8a8b54e5619.jpg",
+    "index.html": "/proyectoVeterinaria/index.html",
+    "main.26d5c675.css.map": "/proyectoVeterinaria/static/css/main.26d5c675.css.map",
+    "main.8e74cfcc.js.map": "/proyectoVeterinaria/static/js/main.8e74cfcc.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.26d5c675.css",
+    "static/js/main.8e74cfcc.js"
+  ]
+}
