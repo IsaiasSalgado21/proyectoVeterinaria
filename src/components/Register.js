@@ -9,13 +9,12 @@ const Register = () => {
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const { login } = useContext(AuthContext);
+  const { register } = useContext(AuthContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Lógica de registro
     if (password === confirmPassword) {
-      login({ email, name });
+      register({ email, name, password });
     } else {
       alert('Passwords do not match!');
     }

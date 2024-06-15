@@ -1,10 +1,11 @@
+// src/components/UserProfile.js
 import React, { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import './UserProfile.css';
 
 const UserProfile = () => {
-  const { currentUser, setCurrentUser } = useContext(AuthContext);
+  const { currentUser, register } = useContext(AuthContext);
   const [userProfile, setUserProfile] = useState({
     username: '',
     age: '',
@@ -19,8 +20,6 @@ const UserProfile = () => {
     accountType: 'user',
     reports: ''
   });
-
-  const navigate = useNavigate();
 
   useEffect(() => {
     if (currentUser) {
@@ -41,6 +40,8 @@ const UserProfile = () => {
     }
   }, [currentUser]);
 
+  const navigate = useNavigate();
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUserProfile({ ...userProfile, [name]: value });
@@ -52,18 +53,28 @@ const UserProfile = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Lógica para enviar los datos del perfil actualizados
-    setCurrentUser(userProfile);
     console.log('Perfil actualizado:', userProfile);
+    register(userProfile);
   };
 
   const handleBack = () => {
-    navigate(-1); // Navega hacia atrás en el historial
+    navigate(-1);
   };
 
   return (
     <div className="page-container">
       <h2>Perfil del Usuario</h2>
+      <div className="user-data">
+        <h3>Datos del Usuario</h3>
+        <p><strong>Nombre de Usuario:</strong> {userProfile.username}</p>
+        <p><strong>Email:</strong> {userProfile.email}</p>
+        <p><strong>Edad:</strong> {userProfile.age}</p>
+        <p><strong>Género:</strong> {userProfile.gender}</p>
+        <p><strong>Teléfono:</strong> {userProfile.phone}</p>
+        <p><strong>Dirección:</strong> {userProfile.address}</p>
+        <p><strong>Tipo de Cuenta:</strong> {userProfile.accountType}</p>
+        <p><strong>Reportes:</strong> {userProfile.reports}</p>
+      </div>
       <p>Actualiza tu información personal y detalles de contacto.</p>
       <form onSubmit={handleSubmit}>
         <label>

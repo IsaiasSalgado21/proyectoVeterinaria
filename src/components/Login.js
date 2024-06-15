@@ -16,12 +16,11 @@ const Login = () => {
     e.preventDefault();
     setIsLoading(true);
 
-    // Simular lógica de autenticación
     setTimeout(() => {
-      login({ email });
+      login(email, password);
       setIsLoading(false);
-      navigate('/dashboard'); // Redirecciona al Dashboard
-    }, 2000); // Simula un retraso de 2 segundos para la autenticación
+      navigate('/dashboard');
+    }, 2000);
   };
 
   if (isLoading) {
