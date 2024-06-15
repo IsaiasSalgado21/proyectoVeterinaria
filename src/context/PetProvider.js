@@ -1,4 +1,4 @@
-// src/contexts/PetProvider.js
+// src/context/PetProvider.js
 import React, { createContext, useState } from 'react';
 
 export const PetContext = createContext();

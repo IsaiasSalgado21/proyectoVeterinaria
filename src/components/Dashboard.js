@@ -2,7 +2,7 @@
 import React, { useContext } from 'react';
 import PetCard from './PetCard';
 import './Dashboard.css';
-import { PetContext } from '../contexts/PetProvider';
+import { PetContext } from '../context/PetProvider';
 
 import JuguetesGatos from './img/JuguetesGatos.jpg';
 import AlimentoPerros from './img/AlimentoPerros.jpg';

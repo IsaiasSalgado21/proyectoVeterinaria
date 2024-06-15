@@ -15,7 +15,8 @@ import Dashboard from './components/Dashboard';
 import Store from './components/Store';
 import PasswordRecovery from './components/PasswordRecovery';
 import Footer from './components/Footer';
-import { ThemeProvider } from './contexts/ThemeContext';
+import { ThemeProvider } from './context/ThemeContext';
+import { PetProvider } from './context/PetProvider'; // Asegúrate de que la ruta sea correcta
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
@@ -23,35 +24,37 @@ function App() {
   const handleLogin = () => setIsLoggedIn(true);
   const handleRegister = () => setIsLoggedIn(true);
   const handlePasswordRecovery = () => {
-    // Lógica después de la recuperación de contraseña
     console.log('Correo de recuperación de contraseña enviado');
   };
+
   return (
     <ThemeProvider>
-    <Router>
-      <div className="App">
-        <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
-        <Routes>
-          <Route path="/" element={isLoggedIn ? <Navigate to="/dashboard" /> : <Splash />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/report" element={<Report />} />
-          <Route path="/emergency" element={<EmergencyCall />} />
-          <Route path="/settings" element={<PageSettings />} />
-          <Route path="/profile" element={<UserProfile />} />
-          <Route path="/adopt" element={<AdoptPet />} />
-          <Route path="/login" element={<Login onLogin={handleLogin} />} />
-          <Route path="/register" element={<Register onRegister={handleRegister} />} />
-          <Route path="/store" element={<Store />} />
-          {isLoggedIn ? (
-            <Route path="/dashboard" element={<Dashboard />} />
-          ) : (
-            <Route path="*" element={<Navigate to="/login" />} />
-          )}
-          <Route path="/passrec" element={<PasswordRecovery />} />
-        </Routes>
-        <Footer />
-      </div>
-    </Router>
+      <PetProvider> {/* Asegúrate de envolver tu aplicación con PetProvider */}
+        <Router>
+          <div className="App">
+            <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+            <Routes>
+              <Route path="/" element={isLoggedIn ? <Navigate to="/dashboard" /> : <Splash />} />
+              <Route path="/home" element={<Home />} />
+              <Route path="/report" element={<Report />} />
+              <Route path="/emergency" element={<EmergencyCall />} />
+              <Route path="/settings" element={<PageSettings />} />
+              <Route path="/profile" element={<UserProfile />} />
+              <Route path="/adopt" element={<AdoptPet />} />
+              <Route path="/login" element={<Login onLogin={handleLogin} />} />
+              <Route path="/register" element={<Register onRegister={handleRegister} />} />
+              <Route path="/store" element={<Store />} />
+              {isLoggedIn ? (
+                <Route path="/dashboard" element={<Dashboard />} />
+              ) : (
+                <Route path="*" element={<Navigate to="/login" />} />
+              )}
+              <Route path="/passrec" element={<PasswordRecovery />} />
+            </Routes>
+            <Footer />
+          </div>
+        </Router>
+      </PetProvider>
     </ThemeProvider>
   );
 }
