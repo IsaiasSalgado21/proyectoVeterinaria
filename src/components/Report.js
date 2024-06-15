@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+// src/components/Report.js
+import React, { useState, useContext } from 'react';
+import { ReportContext } from '../context/ReportContext';
 import './Report.css';
 
 const Report = () => {
@@ -9,6 +11,8 @@ const Report = () => {
     contactInfo: '',
     photo: null,
   });
+
+  const { addReport, reports } = useContext(ReportContext);
 
   const handleOptionSelect = (option) => {
     setSelectedOption(option);
@@ -31,7 +35,13 @@ const Report = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(report);
+    addReport(report);
+    setReport({
+      type: '',
+      description: '',
+      contactInfo: '',
+      photo: null,
+    });
   };
 
   return (
@@ -84,6 +94,17 @@ const Report = () => {
             </label>
             <button type="submit">Enviar {selectedOption === 'report' ? 'reporte' : 'solicitud de adopción'}</button>
           </form>
+          <div className="reports-list">
+            <h3>Reportes enviados</h3>
+            {reports.map((rep, index) => (
+              <div key={index} className="report-item">
+                <p><strong>Tipo:</strong> {rep.type}</p>
+                <p><strong>Descripción:</strong> {rep.description}</p>
+                <p><strong>Contacto:</strong> {rep.contactInfo}</p>
+                {rep.photo && <img src={URL.createObjectURL(rep.photo)} alt="Foto del reporte" />}
+              </div>
+            ))}
+          </div>
         </>
       )}
     </div>
