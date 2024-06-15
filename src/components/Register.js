@@ -1,19 +1,23 @@
 // src/components/Register.js
-import { Link } from 'react-router-dom';
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
 import './Auth.css';
 
-const Register = ({ onRegister }) => {
+const Register = () => {
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const { login } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Lógica de registro
     if (password === confirmPassword) {
-      onRegister();
+      const newUser = { name, email, password };
+      login(newUser);
+      navigate('/dashboard');
     } else {
       alert('Passwords do not match!');
     }
@@ -24,7 +28,7 @@ const Register = ({ onRegister }) => {
       <h2>Register</h2>
       <form onSubmit={handleSubmit}>
         <input
-          type="name"
+          type="text"
           placeholder="Nombre de Usuario"
           value={name}
           onChange={(e) => setName(e.target.value)}
@@ -49,10 +53,10 @@ const Register = ({ onRegister }) => {
         />
         <button type="submit">Registrarse</button>
         <p className="redirect-text">
-            <Link to="/login" className="redirect-link">Iniciar Sesion</Link>
+          <Link to="/login" className="redirect-link">Iniciar Sesion</Link>
         </p>
         <p className="redirect-text">
-            <Link to="/passrec" className="redirect-link">Recuperar contraseña</Link>
+          <Link to="/passrec" className="redirect-link">Recuperar contraseña</Link>
         </p>
       </form>
     </div>

@@ -1,9 +1,10 @@
-// src/components/UserProfile.js
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
 import './UserProfile.css';
 
 const UserProfile = () => {
+  const { currentUser, setCurrentUser } = useContext(AuthContext);
   const [userProfile, setUserProfile] = useState({
     username: '',
     age: '',
@@ -21,6 +22,25 @@ const UserProfile = () => {
 
   const navigate = useNavigate();
 
+  useEffect(() => {
+    if (currentUser) {
+      setUserProfile({
+        username: currentUser.name,
+        age: currentUser.age || '',
+        gender: currentUser.gender || '',
+        phone: currentUser.phone || '',
+        firstName: currentUser.firstName || '',
+        lastName: currentUser.lastName || '',
+        history: currentUser.history || '',
+        email: currentUser.email,
+        address: currentUser.address || '',
+        profilePhoto: currentUser.profilePhoto || null,
+        accountType: currentUser.accountType || 'user',
+        reports: currentUser.reports || ''
+      });
+    }
+  }, [currentUser]);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUserProfile({ ...userProfile, [name]: value });
@@ -33,6 +53,7 @@ const UserProfile = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Lógica para enviar los datos del perfil actualizados
+    setCurrentUser(userProfile);
     console.log('Perfil actualizado:', userProfile);
   };
 

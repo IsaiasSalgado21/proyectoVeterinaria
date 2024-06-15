@@ -1,13 +1,11 @@
 // src/components/Navbar.js
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
 import './Navbar.css';
 
-const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
-  const handleLogout = () => {
-    setIsLoggedIn(false);
-    // Puedes agregar más lógica de limpieza si es necesario
-  };
+const Navbar = () => {
+  const { isLoggedIn, logout } = useContext(AuthContext);
 
   return (
     <nav className="navbar">
@@ -49,13 +47,15 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
         </div>
       </div>
       <div className="navbar-right">
-        <Link to="/profile" className="nav-link">
-          <i className="nav-icon user-icon"></i>Perfil
-        </Link>
         {isLoggedIn ? (
-          <Link to="/" className="nav-link" onClick={handleLogout}>
-            Salir
-          </Link>
+          <>
+            <Link to="/profile" className="nav-link">
+              <i className="nav-icon user-icon"></i>Perfil
+            </Link>
+            <Link to="/" className="nav-link" onClick={logout}>
+              Salir
+            </Link>
+          </>
         ) : (
           <>
             <Link to="/settings" className="nav-link">

@@ -1,13 +1,15 @@
 // src/components/Login.js
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
 import Loading from './Loading';
 import './Auth.css';
 
-const Login = ({ onLogin }) => {
+const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const { login } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -16,9 +18,10 @@ const Login = ({ onLogin }) => {
 
     // Simular lógica de autenticación
     setTimeout(() => {
-      onLogin();
+      const user = { email, name: 'Usuario' }; // Aquí debes agregar lógica real de autenticación
+      login(user);
       setIsLoading(false);
-      navigate('/dashboard'); // Redirecciona al Dashboard
+      navigate('/dashboard');
     }, 2000); // Simula un retraso de 2 segundos para la autenticación
   };
 
